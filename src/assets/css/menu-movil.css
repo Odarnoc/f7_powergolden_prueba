@@ -1,0 +1,84 @@
+@media (max-width: 992px) {
+    #lista-lineas {
+        display: flex;
+        overflow: scroll;
+        text-align: center;
+    }
+    .separar-menu {
+        margin-top: 55px;
+    }
+    .perfil-movil {
+        padding-bottom: 0px;
+    }
+    .no-movil {
+        display: none !important;
+    }
+    .footer-movil {
+        margin-bottom: 55px;
+    }
+    .registrate-movil {
+        padding-left: 0px !important;
+        padding-top: 1rem !important;
+    }
+    .lista-productos-movil {
+        margin-top: 20px;
+    }
+    #lista-lineas li {
+        margin-right: 1rem;
+        margin-left: 1rem;
+    }
+    #lista-lineas li a i {
+        margin-right: 0px;
+    }
+    .sec-gray {
+        padding-top: 20px;
+    }
+    .mobileMenu {
+        transform: translateX(-100%);
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        left: 0;
+        transition: all ease 0.25s;
+    }
+    .mobileMenu.onRight {
+        left: auto;
+        right: 0;
+        transform: translateX(100%);
+    }
+    .mobileMenu.open {
+        transform: translateX(0%);
+    }
+    .mobileMenu .navbar-nav {
+        overflow-y: auto;
+    }
+    .overlay {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+    .overlay.open {
+        display: block;
+        z-index: 1029;
+    }
+    .logo-movil {
+        display: block;
+    }
+}
+
+@media (min-width: 993px) {
+    .logo-movil {
+        display: none;
+    }
+}
+
+.logo-movil {
+    margin: 1rem !important;
+    margin-bottom: 2rem !important;
+}
