@@ -13,7 +13,7 @@
           <div
             v-if="fotoPerfil != ''"
             class="img-menu-profile-div"
-            v-bind:style="{ backgroundImage: 'url(' + fotoPerfil + ')' }"
+            v-bind:style="{ backgroundImage: 'url(\'' + fotoPerfil + '\')' }"
           ></div>
           <!-- VALIDACION PARA PONER LA FOTO DE PERFIL EN ESTOS CAMPOS-->
           <div v-if="fotoPerfil == ''" class="img-menu-profile-div">
@@ -123,7 +123,26 @@ export default {
     selctImg() { //Metodo para abrir ventana cuando demos click al apartado de la imagen
       const self = this;
       const app = self.$f7;
-      $$("#img").click();
+      //$$("#img").click();
+      navigator.camera.getPicture(
+        self.onPhotoURISuccess,
+        self.onFail,
+        { 
+          quality: 50,
+          destinationType: Camera.DestinationType.DATA_URL,
+          sourceType: Camera.PictureSourceType.PHOTOLIBRARY 
+        }
+      );
+    },
+    onPhotoURISuccess(imageData){
+      const self = this;
+      const app = self.$f7;
+      self.fotoPerfilAnterior = self.fotoPerfil;
+      self.fotoPerfil = "data:image/jpeg;base64," +imageData;
+      self.verdaderaFotoDePerfil = imageData;
+    },
+    onFailCamera(message){
+      console.log(message);
     },
     //este metodo la transforma en base64 nuestra imagen
     readURL(input) {

@@ -77,8 +77,8 @@ export default new Vue({
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-    FirebasePlugin.grantPermission(function(hasPermission){
-        console.log("Permission was " + (hasPermission ? "granted" : "denied"));
+    cordova.plugins.firebase.messaging.requestPermission().then(function() {
+        console.log("Push messaging is allowed");
     });
-    FirebasePlugin.subscribe("ventas");
+    cordova.plugins.firebase.messaging.subscribe("ventas");
 }
