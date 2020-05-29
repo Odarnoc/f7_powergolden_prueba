@@ -1,3 +1,6 @@
+template_src/plugins
+template_src/platforms
+template_src/package-lock.json
 # Created by .ignore support plugin (hsz.mobi)
 ### Linux template
 *~
