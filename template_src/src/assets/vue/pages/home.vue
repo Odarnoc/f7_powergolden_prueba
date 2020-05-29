@@ -1,104 +1,85 @@
 <template>
-  <f7-page>
+  <f7-page class="page-gray">
     <!--ingresa tu html aqui -->
     <f7-navbar>
       <topmenu></topmenu>
     </f7-navbar>
+    <f7-block>
+      <f7-row>
+        <f7-col v-bind:key="item" v-for="item in iconosCatLg" @click="navegar(item.nombre)" :class="'d-menu-lg '+item.class" >
+          <p class="t1">{{item.appname}}</p>
+        </f7-col>
+      </f7-row>
 
-    <header class="header-home valign" data-overlay-dark="4" data-scroll-index="0">
-      <f7-block class="container" style="width: 100%;">
-        <f7-row>
-          <f7-col>
-            <div class="d-info-header">
-              <h1 class="t1">El mundo</h1>
-              <h1 class="t2">de la Herbolaria</h1>
-              <f7-button class="btn-header mt-30" href="#" data-scroll-nav="1" @click="verProds()">Ver productos</f7-button>
+    </f7-block>
+    <f7-block>
+      <f7-row>
+        <f7-col v-bind:key="item" v-for="item in iconosCat" width="33" @click="navegar(item.nombre)">
+          <div class="d-menu">
+            <div class="item d-2" :style="'background-color:'+item.color">
+               <i v-if="item.nombre != 'Nissan Guadalajara'" :class="item.icono"></i>
+               <img v-if="item.nombre == 'Nissan Guadalajara'" src="static/logo-nissan.png" style="width:50%">
             </div>
-          </f7-col>
-        </f7-row>
-      </f7-block>
-    </header>
-
-    <seccionbusqueda></seccionbusqueda>
-
-    <f7-block class="sec-gray">
-    <div class="container">
-      <div class="row">
-        
-            
-        <seccionlineas></seccionlineas>
-
-
-          <div class="row row-items-pro lista-productos-movil">
-
-            <div>
-              <p class="title-sec mb-20">Populares</p>
-            </div>
-
-            
-            <div class="d-all-item-pro" v-bind:key="(item, index)" v-for="(item, index) in populares">
-              <div class="d-item-pro h-100" style="padding-bottom: 1rem;">
-                <div class="row">
-                  <f7-col width="40">
-                    <div class="d-img-pro">
-                      <img :src="$store.state.url_server+'productos_img/'+item.imagen" alt="">
-                    </div>
-                  </f7-col>
-                  <f7-col width="60">
-                    <div class="d-info-pro">
-                      <p class="t1" :style="'color:'+item.color">Línea {{item.linea}}</p>
-                      <p class="t2">{{item.nombre}}</p>
-                      <p class="t4 two-lines">{{item.ingredientes}}</p>
-                      <br>
-                      <a class="btn-blue mt-3" @click="verProd(item.id)" role="button">Ver producto</a>
-                    </div>
-                  </f7-col>
-                </div>
-              </div>
-            </div>
-
+              <p class="t1">{{item.appname}}</p>
           </div>
+        </f7-col>
+        <f7-col width="33"></f7-col>
+        <f7-col width="33"></f7-col>
+      </f7-row>
+    </f7-block>
 
-      </div>
-    </div>
-
-  </f7-block>
-
-    <toolbar seleccion="1"></toolbar>
+    <toolbar></toolbar>
     
   </f7-page>
 </template>
 <script>
   import topmenu from "./menu-bar";
   import toolbar from "./toolbar";
-  import seccionbusqueda from "./seccion-busqueda";
-  import seccionlineas from "./seccion-lineas";
   export default {
     components: {
       topmenu,
       toolbar,
-      seccionbusqueda,
-      seccionlineas,
     },
     data() {
       return {
-        populares:[]
+        popupOpened: false,
+        iconosCatLg: [
+          { icono: "fas fa-car", appname: "Automotriz", nombre:"Servicio de mantenimiento automotriz", class:'auto'},
+          { icono: "fas fa-notes-medical", appname: "Citas Médicas", nombre:"Citas Médicas", class:'citas-medicas' }
+        ],
+        iconosCat: [],
+        colores:[
+          "#B8B8B8",
+          "#2B2A2A",
+          "#C01533",
+          "#FCBABE",
+          "#FA757E",
+          "#F8313E",
+        ]
       };
     },
     created() {
       const self = this;
       const app = self.$f7;
       var url = localStorage.getItem("url_server");
-      app.request.get(
-        url + "productos-populares.php",
-        {},
-        function result(data) {
-          var json_data = JSON.parse(data);
-          console.log(json_data);
-          self.populares = json_data;
+      app.request.json(url+'category/', 
+        function (data) {
+          console.log(data);
+          var contadorColor = 0;
+          data.data.forEach(function(JsonCategoria) {
+            if(JsonCategoria.name != "Servicio de mantenimiento automotriz" && JsonCategoria.name != "Citas Médicas"){
+              self.iconosCat.push({ icono:'fas '+JsonCategoria.icon, appname: JsonCategoria.name, nombre:JsonCategoria.name, color: self.colores[contadorColor]});
+              if(contadorColor < 5){
+                contadorColor++;
+              }else{
+                contadorColor=0;
+              }
+            }
+          });
         },
         function error(xhr, status) {
-          
+          var response = JSON.parse(xhr.response);
+          console.log(response);
         }
       );
     },
@@ -108,18 +89,6 @@
         const app = self.$f7;
         self.$store.state.catInicial = categoria;
         app.views.main.router.navigate('/buscar_filtrar'); 
-      },
-      verProds(){
-        const self = this;
-        const app = self.$f7;
-        app.views.main.router.navigate('/productos/'); 
-      },
-      verProd(id){
-        const self = this;
-        const app = self.$f7;
-        console.log(id);
-        self.$store.state.prod_id = id;
-        app.views.main.router.navigate('/productoIndividual/');
       },
     },
   };

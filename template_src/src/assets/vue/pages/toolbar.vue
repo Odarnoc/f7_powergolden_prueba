@@ -1,11 +1,18 @@
 <template>
-  <div class="navbar-bottom" id="menu-bottom-movil">
-      <a class="item" id="inicio-active" href="/home/" :class="homeActivo"><img src="static/icon-home.svg" alt=""></a>
-      <a class="item" v-if="$store.state.user_id == null || $store.state.user_id == undefined || $store.state.user_id == ''" id="carrito-active" href="/login/" :class="carActivo"><img src="static/icon-bag-menu.svg" alt=""></a>
-      <a class="item" v-else id="carrito-active" href="/carrito/" :class="carActivo"><img src="static/icon-bag-menu.svg" alt=""></a>
-      <a class="item" v-if="$store.state.user_id == null || $store.state.user_id == undefined || $store.state.user_id == ''" id="perfil-active" href="/login/" :class="perfilActivo"><img src="static/icon-user-menu.svg" alt=""></a>
-      <a class="item" v-else id="perfil-active" href="/perfil/" :class="perfilActivo"><img src="static/icon-user-menu.svg" alt=""></a>
-  </div>
+  <f7-toolbar bottom-md style="background-color: #FFF !important;">
+      <a href="/home/" class="tab-link" >
+        <i style="font-size: 23px !important;" class="fas fa-home"></i>
+      </a>
+      <a @click="listaProds()" class="tab-link" >
+        <i style="font-size: 23px !important;" class="fas fa-clipboard-list"></i>
+      </a>
+      <a href="/perfil/" class="tab-link">
+        <i style="font-size: 23px !important;" class="fas fa-user"></i>
+      </a>
+      <a href="/notificaciones/" class="tab-link">
+        <i style="font-size: 23px !important;" class="fas fa-bell"></i>
+      </a>
+    </f7-toolbar>
   </template>
   <script>
   export default {
@@ -16,24 +23,29 @@
       return {
         homeActivo: '',
         carActivo: '',
-        perfilActivo: '',
+        helpActivo: '',
+        giftActivo: '',
       };
     },
     created() {
       switch(this.seleccion) {
           case '1':
-            this.homeActivo = 'active';
+            this.giftActivo = 'tab-link-active';
             break;
           case '2':
-            this.carActivo = 'active';
+            this.homeActivo = 'tab-link-active';
             break;
           case '3':
-            this.perfilActivo = 'active';
+            this.carActivo = 'tab-link-active';
+            break;
+          case '4':
+            this.helpActivo = 'tab-link-active';
             break;
           default:
-            this.homeActivo ='';
-            this.carActivo ='';
-            this.perfilActivo ='';
+            this.giftActivo ='toolbar-active-select';
+            this.homeActivo ='toolbar-active-select';
+            this.carActivo ='toolbar-active-select';
+            this.helpActivo ='toolbar-active-select';
             break;
         }
     },

@@ -24,8 +24,16 @@
   </f7-page>
 </template>
 <script>
+  import { f7Page, f7Block, f7BlockTitle, f7Navbar, f7Row, f7Col, f7Button } from "framework7-vue";
   export default {
     components: {
+      f7Page, 
+      f7Block, 
+      f7BlockTitle, 
+      f7Navbar, 
+      f7Row, 
+      f7Col, 
+      f7Button
     },
     data() {
       const colors = [

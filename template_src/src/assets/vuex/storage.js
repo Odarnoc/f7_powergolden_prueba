@@ -5,18 +5,12 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
-        user_id: '',
-        pin: '',
-        prod_id: '',
-        busqueda: '',
-        linea: 1,
-        info_linea: {},
-        prods: [],
+        tipo: '',
+        catInicial: '',
+        servicioAEditar: null,
+        servicioAReservar: null,
         resetPassEmail: '',
         resetCode: '',
-        folleto_id: '',
-        paquete_id: '',
-        url_server: 'https://powergolden.fxsoftware.mx/',
     },
 
     actions: {

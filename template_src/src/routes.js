@@ -1,151 +1,174 @@
-import PanelLeftPage from './assets/vue/pages/panel-left.vue';
+import Login from './assets/vue/pages/login.vue';
+import NuevoLogin from './assets/vue/pages/nuevo-login.vue';
 import Home from './assets/vue/pages/home.vue';
-import Productos from './assets/vue/pages/productos.vue';
-import productoIndividual from './assets/vue/pages/producto-individual.vue';
-import Lineas from './assets/vue/pages/lineas.vue';
-import sobrePowerGolden from './assets/vue/pages/sobre-power-golden.vue';
-import contacto from './assets/vue/pages/contacto.vue';
-import sucursales from './assets/vue/pages/sucursales.vue';
-import carrito from './assets/vue/pages/carrito.vue';
-import perfil from './assets/vue/pages/perfil.vue';
-import login from './assets/vue/pages/login.vue';
-import registro from './assets/vue/pages/registro.vue';
-import recuperarContrasenia from './assets/vue/pages/recuperar-contrasenia.vue';
-import pinContrasenia from './assets/vue/pages/pin-contrasenia.vue';
-import confirmarContrasenia from './assets/vue/pages/confirmar-contrasenia.vue';
-import contraseniaCambiada from './assets/vue/pages/contrasenia-cambiada.vue';
-import dashboardOficina from './assets/vue/pages/dashboard-oficina.vue';
-import registroOficina from './assets/vue/pages/registro-oficina.vue';
-import reporteOficina from './assets/vue/pages/reporte-oficina.vue';
-import historialCompras from './assets/vue/pages/historial-compras.vue';
-import datosEnvio from './assets/vue/pages/envio.vue';
-import resumen from './assets/vue/pages/resumen.vue';
-import loginOficina from './assets/vue/pages/login-oficina.vue';
-import ventaDirecta from './assets/vue/pages/venta-directa.vue';
-import folletosElectronicos from './assets/vue/pages/folletos.vue';
-import folletoIndividual from './assets/vue/pages/folleto-individual.vue';
-import metodosPago from './assets/vue/pages/metodos-pago.vue';
-import comprasPaquetes from './assets/vue/pages/paquetes.vue';
-import paqueteIndividual from './assets/vue/pages/paquete-individual.vue';
+import AboutPage from './assets/vue/pages/about.vue';
+import Registro from './assets/vue/pages/registro.vue';
+import DynamicRoutePage from './assets/vue/pages/dynamic-route.vue';
+import PanelLeftPage from './assets/vue/pages/panel-left.vue';
+import PanelRightPage from './assets/vue/pages/panel-rigth.vue';
+import ColorThemes from './assets/vue/pages/color-themes.vue';
+import Chat from './assets/vue/pages/chat.vue';
+import Vuex from './assets/vue/pages/vuex.vue';
+import Plantilla from './assets/vue/pages/plantilla.vue';
+import Perfil from './assets/vue/pages/perfil.vue';
+import Services from './assets/vue/pages/mis_servicios.vue';
+import Agenda from './assets/vue/pages/agenda.vue';
+import Historial from './assets/vue/pages/historial.vue';
+import Configuraciones from './assets/vue/pages/configuracion.vue';
+import Footer from './assets/vue/pages/footer.vue';
+import OlvidePass from './assets/vue/pages/olvide-pass.vue';
+import IniciarSessionComo from './assets/vue/pages/iniciar_sesion_como.vue';
+import PinDeConfirmacion from './assets/vue/pages/pin_de_confirmacion.vue';
+import RestablecerContrasenia from './assets/vue/pages/restablecer_contrasenia.vue';
+import SplashScreen from './assets/vue/pages/splash_screen.vue';
+import NuevoServicio from './assets/vue/pages/nuevo_servicio.vue';
+import ProveedorCitasPendientes from './assets/vue/pages/proveedor_citas_pendientes.vue';
+import SinCitasPendientes from './assets/vue/pages/sin_citas_pendientes.vue';
+import BuscarFiltrar from './assets/vue/pages/buscar_filtrar.vue';
+import EditarServicio from './assets/vue/pages/editar-servicio.vue';
+import VisualizarServicio from './assets/vue/pages/visualizador_servicios.vue';
+import ProveedorCitasPendientesConfirmar from './assets/vue/pages/proveedor_citas_pendientes_confirmar.vue';
+import FechaDeCita from './assets/vue/pages/fecha_de_cita.vue';
+import pagoTargeta from './assets/vue/pages/pago_targeta.vue';
+import Prueba from './assets/vue/pages/prueba.vue';
+import Notificaciones from './assets/vue/pages/notificaciones.vue';
 
-export default [
-  {
-    path: '/home/',
-    component: Home,
-    options: {
-        clearPreviousHistory: true,
-    }
-  },
-  {
-    path: '/panel-left/',
-    component: PanelLeftPage
-  },
-  {
-      path: '/productoIndividual/',
-      component: productoIndividual
-  },
-  {
-      path: '/productos/',
-      component: Productos
-  },
-  {
-      path: '/lineas/',
-      component: Lineas
-  },
-  {
-      path: '/sobrePowerGolden/',
-      component: sobrePowerGolden
-  },
-  {
-      path: '/contacto/',
-      component: contacto
-  },
-  {
-      path: '/sucursales/',
-      component: sucursales
-  },
-  {
-      path: '/perfil/',
-      component: perfil
-  },
-  {
-      path: '/carrito/',
-      component: carrito
-  },
-  {
-      path: '/login/',
-      component: login
-  },
-  {
-      path: '/registro/',
-      component: registro
-  },
-  {
-      path: '/recuperarContrasenia/',
-      component: recuperarContrasenia
-  },
-  {
-      path: '/pinContrasenia/',
-      component: pinContrasenia
-  },
-  {
-      path: '/confirmarContrasenia/',
-      component: confirmarContrasenia
-  },
-  {
-      path: '/contraseniaCambiada/',
-      component: contraseniaCambiada
-  },
-  {
-      path: '/dashboardOficina/',
-      component: dashboardOficina
-  },
-  {
-      path: '/registroOficina/',
-      component: registroOficina
-  },
-  {
-      path: '/reporteOficina/',
-      component: reporteOficina
-  },
-  {
-      path: '/historialCompras/',
-      component: historialCompras
-  },
-  {
-      path: '/datosEnvio/',
-      component: datosEnvio
-  },
-  {
-      path: '/resumen/',
-      component: resumen
-  },
-  {
-      path: '/loginOficina/',
-      component: loginOficina
-  },
-  {
-      path: '/ventaDirecta/',
-      component: ventaDirecta
-  },
-  {
-      path: '/folletosElectronicos/',
-      component: folletosElectronicos
-  },
-  {
-      path: '/folletoIndividual/',
-      component: folletoIndividual
-  },
-  {
-      path: '/metodosPago/',
-      component: metodosPago
-  },
-  {
-      path: '/comprasPaquetes/',
-      component: comprasPaquetes
-  },
-  {
-      path: '/paqueteIndividual/',
-      component: paqueteIndividual
-  },
+export default [{
+        path: '/',
+        component: NuevoLogin,
+        options: {
+            clearPreviousHistory: true,
+        }
+    },
+    {
+        path: '/prueba',
+        component: Prueba
+    },
+    {
+        path: '/fecha_de_cita',
+        component: FechaDeCita,
+    },
+    {
+        path: '/pago_targeta/',
+        component: pagoTargeta,
+    },
+    {
+        path: '/proveedor_citas_pendientes_confirmar',
+        component: ProveedorCitasPendientesConfirmar
+    },
+    {
+        path: '/buscar_filtrar',
+        component: BuscarFiltrar
+    },
+    {
+        path: '/sin_citas_pendientes',
+        component: SinCitasPendientes
+    },
+    {
+        path: '/proveedor_citas_pendientes',
+        component: ProveedorCitasPendientes
+    },
+    {
+        path: '/splash_screen',
+        component: SplashScreen
+    },
+    {
+        path: '/restablecer_contrasenia',
+        component: RestablecerContrasenia
+    },
+    {
+        path: '/iniciar_sesion_como',
+        component: IniciarSessionComo
+    },
+    {
+        path: '/pin_de_confirmacion',
+        component: PinDeConfirmacion
+    },
+    {
+        path: '/footer/',
+        component: Footer
+    },
+    {
+        path: '/olvide-pass/',
+        component: OlvidePass
+    },
+    {
+        path: '/about/',
+        component: AboutPage
+    },
+    {
+        path: '/home/',
+        component: Home,
+        options: {
+            clearPreviousHistory: true,
+        }
+    },
+    {
+        path: '/perfil/',
+        component: Perfil
+    },
+    {
+        path: '/servicios/',
+        component: Services
+    },
+    {
+        path: '/agenda/',
+        component: Agenda
+    },
+    {
+        path: '/historial/',
+        component: Historial
+    },
+    {
+        path: '/configuracion/',
+        component: Configuraciones
+    },
+    {
+        path: '/plantilla/',
+        component: Plantilla
+    },
+    {
+        path: '/registro/',
+        component: Registro
+    },
+    {
+        path: '/dynamic-route/blog/:blogId/post/:postId/',
+        component: DynamicRoutePage
+    },
+    {
+        path: '/panel-left/',
+        component: PanelLeftPage
+    },
+    {
+        path: '/panel-right/',
+        component: PanelRightPage
+    },
+    {
+        path: '/color-themes/',
+        component: ColorThemes
+    },
+    {
+        path: '/chat/',
+        component: Chat
+    },
+    {
+        path: '/nuevoservicio',
+        component: NuevoServicio
+    },
+    {
+        path: '/editarservicio',
+        component: EditarServicio
+    },
+    {
+        path: '/visualizarservicio',
+        component: VisualizarServicio
+    },
+    {
+        path: '/vuex/',
+        component: Vuex
+    },
+    {
+        path: '/notificaciones/',
+        component: Notificaciones
+    },
 ];

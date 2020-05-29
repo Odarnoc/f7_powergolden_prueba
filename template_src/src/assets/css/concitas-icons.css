@@ -1,0 +1,56 @@
+@font-face {
+  font-family: 'concita';
+  src:  url('../fonts/concita.eot?6qau8v');
+  src:  url('../fonts/concita.eot?6qau8v#iefix') format('embedded-opentype'),
+    url('../fonts/concita.ttf?6qau8v') format('truetype'),
+    url('../fonts/concita.woff?6qau8v') format('woff'),
+    url('../fonts/concita.svg?6qau8v#concita') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="concita-"], [class*=" concita-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'concita' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.concita-arquitectura:before {
+  content: "\e900";
+}
+.concita-arte:before {
+  content: "\e901";
+}
+.concita-cine:before {
+  content: "\e902";
+}
+.concita-deportes:before {
+  content: "\e904";
+}
+.concita-diseño:before {
+  content: "\e905";
+}
+.concita-juridico:before {
+  content: "\e906";
+}
+.concita-mecanica:before {
+  content: "\e907";
+}
+.concita-medicina:before {
+  content: "\e908";
+}
+.concita-tecnología:before {
+  content: "\e909";
+}
+.concita-video:before {
+  content: "\e90a";
+}

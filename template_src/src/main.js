@@ -2,9 +2,12 @@
 import Vue from 'vue';
 
 // Import Framework7
-import Framework7 from 'framework7/framework7.esm.bundle';
+import Framework7 from 'framework7/framework7.esm.bundle.js';
 
-// Import F7 Vue Plugin
+//import Dom7
+import Dom7 from 'dom7/dist/dom7.js';
+
+// Import Framework7 Vue
 import Framework7Vue from 'framework7-vue/framework7-vue.esm.bundle.js';
 
 // Import F7 Style
@@ -27,44 +30,55 @@ import AppFonts from './assets/css/fuentes-custom.css'
 
 // Import App Custom Styles
 import AppStyles from './assets/css/main.css'
-import AppHelper from './assets/css/helper.css'
-import AppMenuMovil from './assets/css/menu-movil.css'
-import AppResponsive from './assets/css/responsive.css'
 
-// Import App Custom Styles
-// import AppStyles from './assets/sass/main.scss'
+// Import App Custom Icons
+import IconsCustoms from './assets/css/concitas-icons.css'
 
 // Import App Component
 import app from './main.vue';
 
+
 // Import Vuex Storage
 import store from './assets/vuex/storage.js';
 
+
 // Different F7-Vue plugin initialization with f7 v3.0
 Framework7.use(Framework7Vue);
+var $$ = Dom7;
+
+var token = localStorage.getItem("token");
+
+if (token !== undefined) {
+    Framework7.request.setup({
+        headers: {
+            'Authorization': token
+        }
+    });
+}
+
 
 // Init Vue App
 export default new Vue({
-  // Root Element
-  el: '#app',
-  store,
-  render: c => c('app'),
-  components: {
-    app
-  },
-  mounted() {
-    window.addEventListener('load', () => {
-      // run after everything is in-place
-      FastClick.attach(document.body);
-    });
-  }
+    // Root Element
+    el: '#app',
+    store,
+    render: c => c('app'),
+    components: {
+        app
+    },
+    mounted() {
+        window.addEventListener('load', () => {
+            // run after everything is in-place
+            FastClick.attach(document.body);
+        });
+    },
 });
 
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
-  cordova.plugins.firebase.messaging.requestPermission().then(function() {
-    console.log("Push messaging is allowed");
-  });
-  cordova.plugins.firebase.messaging.subscribe("ventas");
+    FirebasePlugin.grantPermission(function(hasPermission){
+        console.log("Permission was " + (hasPermission ? "granted" : "denied"));
+    });
+    FirebasePlugin.subscribe("ventas");
 }
